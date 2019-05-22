@@ -1,5 +1,5 @@
 # ShellSecInstall
-Stupid shell script to install security tools 
+Stupid shell script to install security tools in /opt/ 
 
 ######## Add to listTools : ########
 

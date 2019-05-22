@@ -8,7 +8,7 @@
 ## to add specific process to install tool : install:nameTool:install+nameTools > make a function named install+nameTools > code process
 
 #--------------------------------------------------------------
-listType=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git")
+listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git")
 
 orange='\e[0;33m'
 neutre='\e[0;m'
@@ -47,8 +47,8 @@ showMenu() {
     echo -e "${tab} ~~~~~~~~~~~~~~~~~~~~~~~~~"
     echo -e "${tab}  I N S T A L L - M E N U"
     echo -e "${tab} ~~~~~~~~~~~~~~~~~~~~~~~~~"
-    for ((i=1; i < ${#listType[@]}; i++)); do
-	echo  -e "${tab}    $i. Install $(echo -e ${listType[i]} | cut -d: -f2)"
+    for ((i=1; i < ${#listTools[@]}; i++)); do
+	echo  -e "${tab}    $i. Install $(echo -e ${listTools[i]} | cut -d: -f2)"
     done
     echo  -e "${tab}    0. Quit "
     getTabMaxSize
@@ -56,7 +56,7 @@ showMenu() {
 
 getTabMaxSize() {
     max=0
-    for tools in "${listType[@]}"; do 
+    for tools in "${listTools[@]}"; do 
 	((max=max+1))
     done
 }
@@ -91,21 +91,21 @@ choiceSelected(){
 }
 
 howToInstall2(){
-    if [ $(echo -e ${listType[$1]} | cut -d: -f1) == "git" ]; then
-	clone $(echo -e ${listType[$1]} | cut -d: -f4)
-    elif [ $(echo -e ${listType[$1]} | cut -d: -f1) == "wget" ]; then
-	get $(echo -e ${listType[$1]} | cut -d: -f4)
-    elif [ $(echo -e ${listType[$1]} | cut -d: -f1) == "apt" ]; then
-	apt $(echo -e ${listType[$1]} | cut -d: -f3)
-    elif [ $(echo -e ${listType[$1]} | cut -d: -f1) == "install" ]; then
-	$(echo -e ${listType[$1]} | cut -d: -f3)
+    if [ $(echo -e ${listTools[$1]} | cut -d: -f1) == "git" ]; then
+	clone $(echo -e ${listTools[$1]} | cut -d: -f4)
+    elif [ $(echo -e ${listTools[$1]} | cut -d: -f1) == "wget" ]; then
+	get $(echo -e ${listTools[$1]} | cut -d: -f4)
+    elif [ $(echo -e ${listTools[$1]} | cut -d: -f1) == "apt" ]; then
+	apt $(echo -e ${listTools[$1]} | cut -d: -f3)
+    elif [ $(echo -e ${listTools[$1]} | cut -d: -f1) == "install" ]; then
+	$(echo -e ${listTools[$1]} | cut -d: -f3)
     else
 	echo -e "${rouge}Error Format" && exit 0
     fi
 }
 
 installAll(){
-    for ((i=2; i < ${#listType[@]}; i++)); do
+    for ((i=2; i < ${#listTools[@]}; i++)); do
 	howToInstall2 $i
     done
 }
