@@ -86,11 +86,11 @@ choiceSelected(){
     if [ "$1" -eq 0 ]; then
 	 exit 0
     else
-	howToInstall2 $1
+	howToInstall $1
     fi
 }
 
-howToInstall2(){
+howToInstall(){
     if [ $(echo -e ${listTools[$1]} | cut -d: -f1) == "git" ]; then
 	clone $(echo -e ${listTools[$1]} | cut -d: -f4)
     elif [ $(echo -e ${listTools[$1]} | cut -d: -f1) == "wget" ]; then
@@ -106,7 +106,7 @@ howToInstall2(){
 
 installAll(){
     for ((i=2; i < ${#listTools[@]}; i++)); do
-	howToInstall2 $i
+	howToInstall $i
     done
 }
 
