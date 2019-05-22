@@ -1,13 +1,14 @@
 #!/bin/bash
 #--------------- Process to add a Tools -----------------------
-#1 -> add a name at the end of listTools
-#2 -> if it's a git repo add repos to listGits
-#     if it's an apt repos add "install" to listGits name from listTools should be the apt name repo 
+
+######## Add to listTools : ########
+## to add a git : git:nameTool:gitAdresse
+## to add a release : wget:nameTool:releaseAdresse
+## to add an apt packet : apt:nameTool:aptPacketName
+## to add specific process to install tool : install:nameTool:install+nameTools > make a function named install+nameTools > code process
+
 #--------------------------------------------------------------
-
-listTools=( "quit" "All" "Nishang" "Impacket" "ImpacketStaticBinary" "Lazagne" "CrackMapExec" "Mimikatz" "ASREPRoast" "Rpivot" "Rubeus" "SharpHound" "BloodHound" "Kekeo" "Kerbrute" "Sshuttle" "LinEnum" "PayloadsAllTheThings" "NulLinux" "Sn1per" "SecLists" )
-
-listGits=( "installQuit" "installAll" "https://github.com/samratashok/nishang" "https://github.com/SecureAuthCorp/impacket.git" "https://github.com/ropnop/impacket_static_binaries.git" "installLazagne" "https://github.com/byt3bl33d3r/CrackMapExec" "https://github.com/gentilkiwi/mimikatz.git" "https://github.com/HarmJ0y/ASREPRoast.git" "https://github.com/klsecservices/rpivot" "https://github.com/GhostPack/Rubeus.git" "https://github.com/BloodHoundAD/SharpHound.git" "installBloodHound" "installKekeo" "installKerbrute" "install" "https://github.com/rebootuser/LinEnum.git" "https://github.com/swisskyrepo/PayloadsAllTheThings.git" "https://github.com/m8r0wn/nullinux.git" "https://github.com/1N3/Sn1per.git" "https://github.com/danielmiessler/SecLists.git")
+listType=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git")
 
 orange='\e[0;33m'
 neutre='\e[0;m'
@@ -46,8 +47,8 @@ showMenu() {
     echo -e "${tab} ~~~~~~~~~~~~~~~~~~~~~~~~~"
     echo -e "${tab}  I N S T A L L - M E N U"
     echo -e "${tab} ~~~~~~~~~~~~~~~~~~~~~~~~~"
-    for ((i=1; i < ${#listTools[@]}; i++)); do
-	echo  -e "${tab}    $i. Install ${listTools[i]}"
+    for ((i=1; i < ${#listType[@]}; i++)); do
+	echo  -e "${tab}    $i. Install $(echo -e ${listType[i]} | cut -d: -f2)"
     done
     echo  -e "${tab}    0. Quit "
     getTabMaxSize
@@ -55,7 +56,7 @@ showMenu() {
 
 getTabMaxSize() {
     max=0
-    for tools in "${listTools[@]}"; do 
+    for tools in "${listType[@]}"; do 
 	((max=max+1))
     done
 }
@@ -65,46 +66,51 @@ local choice
 read -p "Enter choice [ 0 - $((max-1))] " choice
 case $choice in
     $choice) choiceSelected $choice ;;
-    *) echo -e "${RED}Error...${STD}" && sleep 1
+    *) echo -e "${rouge}Error..." && sleep 1
 esac
 }
 
 clone(){
-    git clone $1
+    git clone https:$1
 }
 
-install(){
+apt(){
     apt-get install $1
+}
+
+get(){
+    wget https:$1
 }
 
 choiceSelected(){
     if [ "$1" -eq 0 ]; then
 	 exit 0
-    elif  [ "$1" -eq 1 ]; then
-	installAll 
     else
-	howToInstall $1
+	howToInstall2 $1
     fi
 }
 
-howToInstall(){
-    if [ "${listGits[$1]}" == "install" ]; then
-	install ${listTools[$1]}
+howToInstall2(){
+    if [ $(echo -e ${listType[$1]} | cut -d: -f1) == "git" ]; then
+	clone $(echo -e ${listType[$1]} | cut -d: -f4)
+    elif [ $(echo -e ${listType[$1]} | cut -d: -f1) == "wget" ]; then
+	get $(echo -e ${listType[$1]} | cut -d: -f4)
+    elif [ $(echo -e ${listType[$1]} | cut -d: -f1) == "apt" ]; then
+	apt $(echo -e ${listType[$1]} | cut -d: -f3)
+    elif [ $(echo -e ${listType[$1]} | cut -d: -f1) == "install" ]; then
+	$(echo -e ${listType[$1]} | cut -d: -f3)
     else
-	clone ${listGits[$1]}
+	echo -e "${rouge}Error Format" && exit 0
     fi
 }
 
 installAll(){
-    for ((i=1; i < ${#listGits[@]}; i++)); do
-	howToInstall $i
+    for ((i=2; i < ${#listType[@]}; i++)); do
+	howToInstall2 $i
     done
 }
 
-installJuicyPotatoe(){
-    git clone 
-}
-
+#lazagne
 installLazagne(){
     git clone https://github.com/AlessandroZ/LaZagne.git
     cd /opt/LaZagne/Windows/
