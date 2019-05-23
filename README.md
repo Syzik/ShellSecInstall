@@ -1,7 +1,5 @@
 # ShellSecInstall
-Stupid shell script to install security tools in /opt/ 
-chmod 765 shellSecInstall
-./schellSecInstall
+Stupid shell script to install security tools in /opt | chmod 765 shellSecInstall | ./schellSecInstall
 
 ######## Add to listTools : ########
 
