@@ -6,22 +6,22 @@
  * ./schellSecInstall
 
 ## Add a tools to listTools :
-### to add a git :
+### Add a git :
 ```sh
 git:nameTool:gitAdresse
 ```
 
-### to add a release :
+### Add a release :
 ```sh
 wget:nameTool:releaseAdresse
 ```
 
-### to add an apt packet :
+### Add an apt packet :
 ```sh
 apt:nameTool:aptPacketName
 ```
 
-### to add specific process : 
+### Add specific process : 
 ```sh
  Install:nameTool:install+nameTools 
 ```
