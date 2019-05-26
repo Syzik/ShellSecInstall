@@ -22,7 +22,9 @@ apt:nameTool:aptPacketName
 ```
 
 ### to add specific process : 
- * Install:nameTool:install+nameTools 
+```sh
+ Install:nameTool:install+nameTools 
+```
  * Make a function named install+nameTools
  * Code process
 

@@ -105,17 +105,6 @@ howToInstall(){
     fi
 }
 
-testsamerevim(){
-syepr 
-hrueizhruiz
-
-hrrrrrrrrrr
-
-
-rrrrrrrrrrrrr rrrrrrrrrrr rrrrrrrrrrrrrrrrrrrrr
-rrrrrrrrrrrrr rrrrrrrrrrr rrrrrrrrrrrrrrrrrrrrr
-}
-
 installAll(){
     for ((i=2; i < ${#listTools[@]}; i++)); do
 	howToInstall $i
