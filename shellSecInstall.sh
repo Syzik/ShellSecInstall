@@ -8,6 +8,7 @@
 ## to add specific process to install tool : install:nameTool:install+nameTools > make a function named install+nameTools > code process
 
 #--------------------------------------------------------------
+
 listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git")
 
 orange='\e[0;33m'
@@ -104,6 +105,17 @@ howToInstall(){
     fi
 }
 
+testsamerevim(){
+syepr 
+hrueizhruiz
+
+hrrrrrrrrrr
+
+
+rrrrrrrrrrrrr rrrrrrrrrrr rrrrrrrrrrrrrrrrrrrrr
+rrrrrrrrrrrrr rrrrrrrrrrr rrrrrrrrrrrrrrrrrrrrr
+}
+
 installAll(){
     for ((i=2; i < ${#listTools[@]}; i++)); do
 	howToInstall $i
@@ -136,6 +148,7 @@ installKekeo(){
 	mkdir kekeo; mv kekeo* ./kekeo; mv README.md ./kekeo
 	rm kekeo.zip && rm README.md
 }
+
 # Kerbrute
 installKerbrute(){
     wget https://github.com/ropnop/kerbrute/releases/download/v1.0.1/kerbrute_linux_amd64
@@ -160,3 +173,4 @@ echo -e "${orange}
 }
 
 main
+

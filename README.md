@@ -1,13 +1,28 @@
 # ShellSecInstall
-Stupid shell script to install security tools in /opt | chmod 765 shellSecInstall | ./schellSecInstall
 
-######## Add to listTools : ########
+## Instruction 
+ * Install security tools in /opt 
+ * chmod 765 shellSecInstall 
+ * ./schellSecInstall
 
-to add a git : git:nameTool:gitAdresse
+## Add a tools to listTools :
+### to add a git :
+```sh
+git:nameTool:gitAdresse
+```
 
-to add a release : wget:nameTool:releaseAdresse
+### to add a release :
+```sh
+wget:nameTool:releaseAdresse
+```
 
-to add an apt packet : apt:nameTool:aptPacketName
+### to add an apt packet :
+```sh
+apt:nameTool:aptPacketName
+```
 
-to add specific process to install tool : install:nameTool:install+nameTools > make a function named install+nameTools > code process
+### to add specific process : 
+ * Install:nameTool:install+nameTools 
+ * Make a function named install+nameTools
+ * Code process
 
