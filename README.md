@@ -1,5 +1,12 @@
 # ShellSecInstall
 
+## Prerequis
+ * Internet access
+ * Root access
+ * Wget
+ * Unzip
+ * Git
+	
 ## Instruction 
  * Install security tools in /opt 
  * chmod 765 shellSecInstall 
