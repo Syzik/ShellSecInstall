@@ -111,28 +111,28 @@ installAll(){
     done
 }
 
-#Empire
+# Empire
 installEmpire(){
-git clone https://github.com/EmpireProject/Empire.git
+clone $(echo "//github.com/EmpireProject/Empire.git")
 cd /opt/Empire/setup/
 ./install.sh
 cd /opt
 }
 
-#lazagne
+# Lazagne
 installLazagne(){
-    git clone https://github.com/AlessandroZ/LaZagne.git
-    cd /opt/LaZagne/Windows/
-    wget https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.2/lazagne.exe
-    cd /opt
+clone $(echo "//github.com/AlessandroZ/LaZagne.git")
+cd /opt/LaZagne/Windows/
+wget $(echo "http://github.com/AlessandroZ/LaZagne/releases/download/v2.4.2/lazagne.exe")
+cd /opt
 }
 
 # BloodHound
-installBloodHound(){    
-    wget https://github.com/BloodHoundAD/BloodHound/releases/download/2.1.0/BloodHound-linux-x64.zip
-    unzip BloodHound-linux-x64.zip
-    rm BloodHound-linux-x64.zip
-    git clone https://github.com/fox-it/BloodHound.py.git
+installBloodHound(){
+wget $(echo "https://github.com/BloodHoundAD/BloodHound/releases/download/2.1.0/BloodHound-linux-x64.zip")
+unzip BloodHound-linux-x64.zip
+rm BloodHound-linux-x64.zip
+clone $(echo "//github.com/fox-it/BloodHound.py.git")
 }
 
 # CME
@@ -149,19 +149,19 @@ cd /opt/
 
 # Kekeo
 installKekeo(){
-	wget https://github.com/gentilkiwi/kekeo/releases/download/2.2.0-20190407/kekeo.zip
-	unzip kekeo.zip
-	mkdir kekeo
-	mv x64 kekeoX64 && mv Win32 kekeoWin32 && mv samba kekeoSamba
-	rm kekeo.zip
-	mkdir kekeo; mv kekeo* ./kekeo; mv README.md ./kekeo
-	rm kekeo.zip && rm README.md
+wget $(echo "https://github.com/gentilkiwi/kekeo/releases/download/2.2.0-20190407/kekeo.zip")
+unzip kekeo.zip
+mkdir kekeo
+mv x64 kekeoX64 && mv Win32 kekeoWin32 && mv samba kekeoSamba
+rm kekeo.zip
+mkdir kekeo; mv kekeo* ./kekeo; mv README.md ./kekeo
+rm kekeo.zip && rm README.md
 }
 
 # Kerbrute
 installKerbrute(){
-    wget https://github.com/ropnop/kerbrute/releases/download/v1.0.1/kerbrute_linux_amd64
-    chmod 764 kerbrute_linux_amd64
+wget $(echo "https://github.com/ropnop/kerbrute/releases/download/v1.0.1/kerbrute_linux_amd64")
+chmod 764 kerbrute_linux_amd64
 }
 
 syzik(){
