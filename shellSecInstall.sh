@@ -9,7 +9,7 @@
 
 #--------------------------------------------------------------
 
-listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec.git" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git" "git:Grouper2:https://github.com/l0ss/Grouper2.git" "git:GpoCheck:https://github.com/aurel26/gpocheck.git" "install:cme:installCme" )
+listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec.git" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git" "git:Grouper2:https://github.com/l0ss/Grouper2.git" "git:GpoCheck:https://github.com/aurel26/gpocheck.git" "install:cme:installCme" "install:ticket_converter:installTicketConverter")
 
 orange='\e[0;33m'
 neutre='\e[0;m'
@@ -113,18 +113,18 @@ installAll(){
 
 #lazagne
 installLazagne(){
-    git clone https://github.com/AlessandroZ/LaZagne.git
-    cd /opt/LaZagne/Windows/
-    wget https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.2/lazagne.exe
-    cd /opt
+git clone https://github.com/AlessandroZ/LaZagne.git
+cd /opt/LaZagne/Windows/
+wget https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.2/lazagne.exe
+cd /opt
 }
 
 # BloodHound
 installBloodHound(){    
-    wget https://github.com/BloodHoundAD/BloodHound/releases/download/2.1.0/BloodHound-linux-x64.zip
-    unzip BloodHound-linux-x64.zip
-    rm BloodHound-linux-x64.zip
-    git clone https://github.com/fox-it/BloodHound.py.git
+wget https://github.com/BloodHoundAD/BloodHound/releases/download/2.1.0/BloodHound-linux-x64.zip
+unzip BloodHound-linux-x64.zip
+rm BloodHound-linux-x64.zip
+git clone https://github.com/fox-it/BloodHound.py.git
 }
 
 # CME
@@ -141,19 +141,26 @@ cd /opt/
 
 # Kekeo
 installKekeo(){
-	wget https://github.com/gentilkiwi/kekeo/releases/download/2.2.0-20190407/kekeo.zip
-	unzip kekeo.zip
-	mkdir kekeo
-	mv x64 kekeoX64 && mv Win32 kekeoWin32 && mv samba kekeoSamba
-	rm kekeo.zip
-	mkdir kekeo; mv kekeo* ./kekeo; mv README.md ./kekeo
-	rm kekeo.zip && rm README.md
+wget https://github.com/gentilkiwi/kekeo/releases/download/2.2.0-20190407/kekeo.zip
+unzip kekeo.zip
+mkdir kekeo
+mv x64 kekeoX64 && mv Win32 kekeoWin32 && mv samba kekeoSamba
+rm kekeo.zip
+mkdir kekeo; mv kekeo* ./kekeo; mv README.md ./kekeo
+rm kekeo.zip && rm README.md
 }
 
 # Kerbrute
 installKerbrute(){
-    wget https://github.com/ropnop/kerbrute/releases/download/v1.0.1/kerbrute_linux_amd64
-    chmod 764 kerbrute_linux_amd64
+wget https://github.com/ropnop/kerbrute/releases/download/v1.0.1/kerbrute_linux_amd64
+chmod 764 kerbrute_linux_amd64
+}
+
+# Ticket_Converter
+installTicketConverter(){
+git clone https://github.com/Zer1t0/ticket_converter
+cd ticket_converter
+pip install -r requirements.txt
 }
 
 syzik(){
