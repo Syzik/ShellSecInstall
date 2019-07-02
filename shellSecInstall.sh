@@ -9,11 +9,7 @@
 
 #--------------------------------------------------------------
 
-<<<<<<< HEAD
-listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec.git" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git" "git:Grouper2:https://github.com/l0ss/Grouper2.git" "git:GpoCheck:https://github.com/aurel26/gpocheck.git" "install:cme:installCme" "install:ticket_converter:installTicketConverter")
-=======
-listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec.git" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git" "git:Grouper2:https://github.com/l0ss/Grouper2.git" "git:GpoCheck:https://github.com/aurel26/gpocheck.git" "install:cme:installCme" "install:Empire:installEmpire")
->>>>>>> 9e2db91b9756d2e89acec972b9337b2e3adda7a3
+listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec.git" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git" "git:Grouper2:https://github.com/l0ss/Grouper2.git" "git:GpoCheck:https://github.com/aurel26/gpocheck.git" "install:cme:installCme" "install:Empire:installEmpire" "install:ticket_converter:installTicketConverter")
 
 orange='\e[0;33m'
 neutre='\e[0;m'
@@ -152,7 +148,7 @@ cd /opt/
 
 # Kekeo
 installKekeo(){
-wget $(echo "https://github.com/gentilkiwi/kekeo/releases/download/2.2.0-20190407/kekeo.zip")
+get $(echo "https://github.com/gentilkiwi/kekeo/releases/download/2.2.0-20190407/kekeo.zip")
 unzip kekeo.zip
 mkdir kekeo
 mv x64 kekeoX64 && mv Win32 kekeoWin32 && mv samba kekeoSamba
@@ -172,6 +168,7 @@ installTicketConverter(){
 clone $(echo "//github.com/Zer1t0/ticket_converter")
 cd ticket_converter
 pip install -r requirements.txt
+chmod 654 ticket_convert.py
 cd /opt
 }
 
