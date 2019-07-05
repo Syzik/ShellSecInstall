@@ -9,7 +9,7 @@
 
 #--------------------------------------------------------------
 
-listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec.git" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "git:Rpivot:https://github.com/klsecservices/rpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git" "git:Grouper2:https://github.com/l0ss/Grouper2.git" "git:GpoCheck:https://github.com/aurel26/gpocheck.git" "install:cme:installCme" "install:Empire:installEmpire" "install:ticket_converter:installTicketConverter")
+listTools=( "" "install:All:installAll" "git:Nishang:https://github.com/samratashok/nishang" "git:Impacket:https://github.com/SecureAuthCorp/impacket.git" "git:ImpacketStaticBinary:https://github.com/ropnop/impacket_static_binaries.git" "install:Lazagne:installLazagne" "git:CrackMapExec:https://github.com/byt3bl33d3r/CrackMapExec.git" "git:Mimikatz:https://github.com/gentilkiwi/mimikatz.git" "git:ASRPRoast:https://github.com/HarmJ0y/ASREPRoast.git" "install:Rpivot:installRpivot" "git:Rubeus:https://github.com/GhostPack/Rubeus.git" "git:SharpHound:https://github.com/BloodHoundAD/SharpHound.git" "install:BloodHound:installBloodHound" "install:Kekeo:installKekeo" "install:Kerbrute:installKerbrute" "apt:Sshuttle:sshuttle" "git:LinEnum:https://github.com/rebootuser/LinEnum.git" "git:PayloadAllTheThings:https://github.com/swisskyrepo/PayloadsAllTheThings.git" "git:Nullinux:https://github.com/m8r0wn/nullinux.git" "git:Sn1per:https://github.com/1N3/Sn1per.git" "git:SecLists:https://github.com/danielmiessler/SecLists.git" "git:Grouper2:https://github.com/l0ss/Grouper2.git" "git:GpoCheck:https://github.com/aurel26/gpocheck.git" "install:cme:installCme" "install:Empire:installEmpire" "install:ticket_converter:installTicketConverter")
 
 orange='\e[0;33m'
 neutre='\e[0;m'
@@ -109,6 +109,14 @@ installAll(){
     for ((i=2; i < ${#listTools[@]}; i++)); do
 	howToInstall $i
     done
+}
+
+#Rpivot
+installRpivot(){
+clone $(echo "//github.com/klsecservices/rpivot")
+cd rpivot
+wget $(echo "https://github.com/klsecservices/rpivot/releases/download/v1.0/client.exe")
+cd /opt
 }
 
 # Empire
